@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Reveal from '../../components/ui/Reveal.astro';
+
+export async function getStaticPaths() {
+  const posts = [
+    {
+      slug: 'monolito-modular-vs-microservicios', title: 'Monolito Modular vs Microservicios', date: '15 Jun 2026',
+      content: ['En el mundo del desarrollo de software, la elección entre un monolito modular y microservicios es una de las decisiones arquitectónicas más importantes.', '', '**¿Qué es un Monolito Modular?**', 'Un monolito modular es una aplicación que se despliega como una sola unidad, pero con módulos bien definidos y débilmente acoplados.', '', '**Ventajas:**', '- Simplicidad operativa: un solo deploy', '- Comunicación intra-proceso: sin latencia', '- Consistencia transaccional', '- Ideal para equipos pequeños', '', '**Conclusión:**', 'No hay una respuesta única. Un Monolito Modular bien diseñado ofrece el mejor equilibrio.'],
+      tags: ['Arquitectura', '.NET'],
+    },
+    {
+      slug: 'clean-architecture-net', title: 'Clean Architecture en la práctica con .NET', date: '28 May 2026',
+      content: ['Clean Architecture propone una separación clara de responsabilidades en capas concéntricas.', '', '**Estructura de capas:**', '1. **Domain**: Entidades, Value Objects', '2. **Application**: Casos de uso, DTOs', '3. **Infrastructure**: Implementaciones concretas', '4. **Presentation**: Controladores, UI', '', '**Regla de dependencia:** Las dependencias apuntan hacia adentro.', '', 'Clean Architecture no es una bala de plata, pero aplicada con pragmatismo mejora la mantenibilidad.'],
+      tags: ['.NET', 'C#'],
+    },
+    {
+      slug: 'typescript-tipos-avanzados', title: 'TypeScript: Tipos avanzados', date: '10 May 2026',
+      content: ['TypeScript ofrece un sistema de tipos increíblemente poderoso.', '', '**1. Conditional Types**', 'Tipos que dependen de una condición.', '', '**2. Mapped Types**', 'Transforman propiedades de un tipo existente.', '', '**3. Template Literal Types**', 'Manipulan strings a nivel de tipo.', '', '**4. Infer**', 'Extrae tipos condicionalmente.'],
+      tags: ['TypeScript', 'React'],
+    },
+  ];
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+---
+
+<BaseLayout title={`${post.title} — Blog Darwin Gomez`}>
+  <Header />
+  <main class="pt-20 min-h-screen">
+    <article class="py-20 px-6" style="max-width: 48rem; margin: 0 auto;">
+      <a href="/blog" class="text-xs text-khaos-cyan hover:text-white transition-colors font-mono mb-6 inline-block">← Volver al blog</a>
+      <Reveal>
+        <h1 class="text-2xl md:text-4xl font-black text-white mb-3 tracking-[-0.03em]">{post.title}</h1>
+      </Reveal>
+      <div class="flex items-center gap-3 text-xs text-gray-500 font-mono mb-8">
+        <span>{post.date}</span>
+        <span>•</span>
+        <div class="flex gap-1.5">{post.tags.map((tag) => <span class="text-[10px] px-2 py-0.5 border border-white/10 text-gray-600">{tag}</span>)}</div>
+      </div>
+      <Reveal delay={100}>
+        <div class="bg-[#111] border border-white/5 p-6 space-y-3 text-sm leading-relaxed text-gray-300">
+          {post.content.map((line) => {
+            if (line.startsWith('**') && line.endsWith('**')) return <h3 class="font-bold text-white text-sm mt-4 mb-2">{line.replace(/\*\*/g, '')}</h3>;
+            if (line.startsWith('- ')) return <li class="ml-4 text-gray-400">{line.slice(2)}</li>;
+            if (line === '') return <div class="h-2"></div>;
+            return <p>{line}</p>;
+          })}
+        </div>
+      </Reveal>
+    </article>
+  </main>
+  <Footer />
+</BaseLayout>

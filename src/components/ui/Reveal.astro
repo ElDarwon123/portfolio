@@ -1,0 +1,20 @@
+---
+export interface Props {
+  class?: string;
+  delay?: number;
+  direction?: 'up' | 'left' | 'right' | 'none';
+  tag?: 'div' | 'section' | 'article' | 'span' | 'a';
+  href?: string;
+}
+
+const { class: className, delay = 0, direction = 'up', tag: Tag = 'div', href } = Astro.props;
+---
+
+<Tag
+  data-reveal={direction !== 'none' ? '' : undefined}
+  data-reveal-delay={delay > 0 ? delay : undefined}
+  href={href}
+  class:list={[className]}
+>
+  <slot />
+</Tag>

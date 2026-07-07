@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Reveal from '../../components/ui/Reveal.astro';
+
+const posts = [
+  { title: 'Monolito Modular vs Microservicios', date: '15 Jun 2026', slug: 'monolito-modular-vs-microservicios', excerpt: 'Explorando las ventajas del Monolito Modular como alternativa pragmática a los microservicios.', tags: ['Arquitectura', '.NET'] },
+  { title: 'Clean Architecture en la práctica con .NET', date: '28 May 2026', slug: 'clean-architecture-net', excerpt: 'Cómo implementar Clean Architecture en proyectos .NET reales.', tags: ['.NET', 'C#'] },
+  { title: 'TypeScript: Tipos avanzados', date: '10 May 2026', slug: 'typescript-tipos-avanzados', excerpt: 'Tipos condicionales, mapped types y template literal types.', tags: ['TypeScript', 'React'] },
+];
+---
+
+<BaseLayout title="Blog — Darwin Gomez">
+  <Header />
+  <main class="pt-20 min-h-screen">
+    <section class="py-20 px-6 max-w-4xl mx-auto">
+      <Reveal>
+        <p class="text-[11px] text-gray-600 font-mono tracking-[4px] uppercase mb-2">// Blog</p>
+        <h1 class="text-4xl md:text-6xl font-black text-white tracking-[-0.03em]">Blog</h1>
+      </Reveal>
+      <div class="space-y-4 mt-14">
+        {posts.map((post) => (
+          <Reveal>
+            <a href={`/blog/${post.slug}`} class="accent-bar group">
+              <div class="bar"></div>
+              <div class="space-y-2 flex-1 min-w-0">
+                <div class="flex items-center justify-between gap-2">
+                  <h2 class="font-bold text-sm text-white group-hover:text-khaos-magenta transition-colors truncate">{post.title}</h2>
+                  <span class="text-[10px] text-gray-600 font-mono whitespace-nowrap shrink-0">{post.date}</span>
+                </div>
+                <p class="text-xs text-gray-500 leading-relaxed">{post.excerpt}</p>
+                <div class="flex gap-1.5 pt-1">{post.tags.map((tag) => <span class="text-[10px] px-2 py-0.5 border border-white/10 text-gray-600">{tag}</span>)}</div>
+              </div>
+            </a>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,54 @@
+---
+import Reveal from '../ui/Reveal.astro';
+
+const testimonials = [
+  {
+    initials: 'JV',
+    name: 'Jorge Andrés Vargas Cordoba',
+    role: 'Ingeniero Software Frontend Senior | React | Node | TypeScript',
+    quote: 'Working with Steven has been a great experience. He is a backend developer with an analytical mindset and a strong ability to solve various types of problems. His quick learning skills and structured approach allow him to adapt easily to any team and project, delivering efficient and well-designed solutions.',
+    color: 'bg-khaos-magenta',
+    date: '21 de marzo de 2025',
+  },
+  {
+    initials: 'MP',
+    name: 'Mónica Sofía Mosquera Pascuas',
+    role: 'Analista de calidad | Analista y Desarrolladora de Software | Ingeniera de Sistemas',
+    quote: 'Steven is a highly skilled professional with exceptional problem-solving abilities. His expertise in refactoring critical functionalities, implementing robust unit testing, and ensuring clean, maintainable code through SonarQube sets him apart.',
+    color: 'bg-khaos-cyan',
+    date: '21 de marzo de 2025',
+  },
+];
+---
+
+<section id="testimonials" class="relative py-28 px-6 overflow-hidden section-blur">
+  <div class="bg-number -left-20 top-10">05</div>
+
+  <div class="max-w-5xl mx-auto relative z-10">
+    <Reveal>
+      <p class="text-[11px] text-gray-600 font-mono tracking-[4px] uppercase mb-2">// 05</p>
+      <h2 class="text-4xl md:text-6xl font-black text-white tracking-[-0.03em]">Testimonios</h2>
+      <p class="text-sm text-gray-500 mt-2">Lo que dicen mis colegas de equipo sobre mi trabajo.</p>
+    </Reveal>
+
+    <div class="mt-14 grid md:grid-cols-2 gap-6">
+      {testimonials.map((t, i) => (
+        <Reveal delay={i * 150}>
+          <div class="bg-[#111] border border-white/5 p-6 rounded-xl hover:border-khaos-magenta/20 transition-colors duration-300">
+            <p class="text-sm text-gray-300 italic leading-relaxed mb-5">"{t.quote}"</p>
+            <div class="flex items-center gap-3">
+              <div class={`w-11 h-11 rounded-full ${t.color} flex items-center justify-center text-sm font-bold text-white shrink-0`}>
+                {t.initials}
+              </div>
+              <div>
+                <p class="text-sm font-bold text-white">{t.name}</p>
+                <p class="text-[11px] text-gray-500 leading-snug">{t.role}</p>
+              </div>
+            </div>
+            <p class="text-[10px] text-gray-600 mt-3 font-mono">LinkedIn · {t.date}</p>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+  </div>
+</section>

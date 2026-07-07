@@ -1,0 +1,88 @@
+---
+import Reveal from '../ui/Reveal.astro';
+---
+
+<section id="hero" class="relative min-h-screen flex items-center overflow-hidden pt-14">
+  <div class="absolute top-10 right-[10%] w-[30rem] h-[30rem] bg-khaos-magenta/8 rounded-full blur-[120px] animate-pulse"></div>
+  <div class="absolute bottom-20 left-[5%] w-[25rem] h-[25rem] bg-khaos-cyan/6 rounded-full blur-[100px] animate-pulse" style="animation-delay: 1s"></div>
+
+  <img
+    src="https://media3.giphy.com/media/13HBDT4QSTpveU/giphy.gif"
+    alt="Deal With It"
+    class="hero-gif mr-[7%] w-[500px] h-[400px] object-cover"
+    loading="eager"
+  />
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 w-full">
+    <Reveal delay={100}>
+      <p class="text-[11px] text-gray-500 font-mono tracking-[4px] uppercase mb-8">Desarrollador FullStack y Arquitecto de Software</p>
+    </Reveal>
+
+    <Reveal delay={250}>
+      <h1 class="text-[clamp(3.5rem,12vw,10rem)] font-black text-white tracking-[-0.04em] leading-[0.85] -ml-1">
+        <span class="inline-block hero-letter" style="animation-delay: 0.3s">D</span><span class="inline-block hero-letter" style="animation-delay: 0.35s">A</span><span class="inline-block hero-letter" style="animation-delay: 0.4s">R</span><span class="inline-block hero-letter" style="animation-delay: 0.45s">W</span><span class="inline-block hero-letter" style="animation-delay: 0.5s">I</span><span class="inline-block hero-letter" style="animation-delay: 0.55s">N</span><br />
+        <span class="text-khaos-magenta inline-block hero-letter" style="animation-delay: 0.7s">G</span><span class="text-khaos-magenta inline-block hero-letter" style="animation-delay: 0.75s">O</span><span class="text-khaos-magenta inline-block hero-letter" style="animation-delay: 0.8s">M</span><span class="text-khaos-magenta inline-block hero-letter" style="animation-delay: 0.85s">E</span><span class="text-khaos-magenta inline-block hero-letter" style="animation-delay: 0.9s">Z</span>
+      </h1>
+    </Reveal>
+
+    <Reveal delay={500}>
+      <p class="text-base md:text-lg text-gray-400 max-w-xl mt-8 leading-relaxed">
+        Construyo sistemas escalables de alto rendimiento con 
+        <span class="text-white font-semibold"> React</span>, 
+        <span class="text-white font-semibold"> Next.js</span>, 
+        <span class="text-white font-semibold"> Nestjs</span> y 
+        <span class="text-white font-semibold"> .NET</span>.
+      </p>
+    </Reveal>
+
+    <Reveal delay={650}>
+      <div class="flex flex-wrap gap-3 mt-8">
+        <a href="#projects" class="magnetic px-6 py-3 bg-khaos-magenta text-white text-xs font-bold tracking-wider uppercase hover:shadow-[0_0_30px_rgba(214,0,122,0.5)] transition-all duration-300">
+          Ver Proyectos
+        </a>
+        <a href="#contact" class="magnetic px-6 py-3 border border-gray-600 text-gray-300 text-xs font-bold tracking-wider uppercase hover:border-white hover:text-white transition-all duration-300">
+          Contáctame
+        </a>
+      </div>
+    </Reveal>
+
+    <Reveal delay={800}>
+      <div class="flex flex-wrap gap-2 mt-10">
+        <span class="px-3 py-1.5 text-[10px] font-mono font-bold border border-khaos-magenta/30 text-khaos-magenta/80">FullStack Developer</span>
+        <span class="px-3 py-1.5 text-[10px] font-mono font-bold border border-khaos-cyan/30 text-khaos-cyan/80">Frontend Engineer</span>
+        <span class="px-3 py-1.5 text-[10px] font-mono font-bold border border-khaos-amber/30 text-khaos-amber/80">Arquitecto de Software</span>
+      </div>
+    </Reveal>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+    <span class="text-gray-700 text-[10px] font-mono tracking-[4px]">SCROLL</span>
+    <span class="text-gray-600 text-lg animate-bounce">↓</span>
+  </div>
+
+  <style>
+    .hero-letter {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: letterReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes letterReveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-gif {
+      position: absolute;
+      right: 12%;
+      top: 28%;
+      width: 200px;
+      opacity: 0.65;
+      pointer-events: none;
+      animation: float 6s ease-in-out infinite;
+      z-index: 1;
+      border-radius: 8px;
+      filter: saturate(0.8);
+    }
+    @media (max-width: 768px) {
+      .hero-gif { display: none; }
+    }
+  </style>
+</section>

@@ -1,0 +1,176 @@
+---
+import { Icon } from 'astro-icon/components';
+import Reveal from '../ui/Reveal.astro';
+
+const icons = [
+  { name: 'JavaScript', icon: 'logos:javascript', x: 5, y: 10, size: 44 },
+  { name: 'TypeScript', icon: 'logos:typescript', x: 20, y: 5, size: 40 },
+  { name: 'React', icon: 'logos:react', x: 37, y: 14, size: 46 },
+  { name: 'Next.js', icon: 'logos:nextjs', x: 55, y: 6, size: 42 },
+  { name: 'Node.js', icon: 'logos:nodejs', x: 72, y: 16, size: 42 },
+  { name: '.NET', icon: 'logos:dotnet', x: 88, y: 4, size: 40 },
+  { name: 'NestJS', icon: 'logos:nestjs', x: 10, y: 42, size: 38 },
+  { name: 'Python', icon: 'logos:python', x: 28, y: 38, size: 44 },
+  { name: 'Angular', icon: 'logos:angular', x: 46, y: 48, size: 40 },
+  { name: 'MongoDB', icon: 'logos:mongodb', x: 63, y: 40, size: 42 },
+  { name: 'MySQL', icon: 'logos:mysql', x: 80, y: 46, size: 38 },
+  { name: 'GraphQL', icon: 'logos:graphql', x: 6, y: 74, size: 40 },
+  { name: 'Git', icon: 'logos:git', x: 23, y: 78, size: 42 },
+  { name: 'Docker', icon: 'logos:docker', x: 42, y: 70, size: 38 },
+  { name: 'HTML', icon: 'logos:html-5', x: 60, y: 76, size: 40 },
+  { name: 'CSS', icon: 'logos:css', x: 78, y: 68, size: 42 },
+];
+
+const certifications = [
+  { name: '.NET Microservices: DDD, CQRS, Vertical/Clean Architecture', source: 'Udemy', year: '2025' },
+  { name: '.NET Backend Bootcamp: Modulith, VSA, DDD, CQRS and Outbox', source: 'Udemy', year: '2025' },
+  { name: 'Scrum Foundation Professional Certificate', source: 'Certiprof', year: '2023' },
+];
+---
+
+<section id="skills" class="relative py-28 overflow-hidden">
+  <div class="bg-number -right-10 top-10">02</div>
+
+  <div class="max-w-5xl mx-auto relative z-10 px-6">
+    <Reveal>
+      <p class="text-[11px] text-gray-600 font-mono tracking-[4px] uppercase mb-2">// 02</p>
+      <h2 class="text-4xl md:text-6xl font-black text-white tracking-[-0.03em]">Habilidades</h2>
+    </Reveal>
+  </div>
+
+  <Reveal delay={100}>
+    <div class="mt-14 relative w-full h-[380px] md:h-[420px]" id="mesh-area">
+      {icons.map((tech) => (
+        <div
+          class="mesh-icon absolute flex items-center justify-center group cursor-default"
+          data-name={tech.name}
+          data-x={tech.x}
+          data-y={tech.y}
+          style={`left: ${tech.x}%; top: ${tech.y}%;`}
+        >
+          <Icon name={tech.icon} class="opacity-60 group-hover:opacity-100 transition-opacity duration-300" style={`width: ${tech.size}px; height: ${tech.size}px;`} />
+          <span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[9px] text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">{tech.name}</span>
+        </div>
+      ))}
+    </div>
+  </Reveal>
+
+  <div class="max-w-5xl mx-auto relative z-10 px-6">
+    <Reveal delay={200}>
+      <div class="mt-14">
+        <h3 class="text-xs font-bold text-gray-500 uppercase tracking-[3px] mb-5">Certificaciones</h3>
+        <div class="space-y-3">
+          {certifications.map((cert) => (
+            <div class="flex items-start gap-3 text-sm text-gray-400">
+              <span class="text-khaos-green mt-1 font-mono text-xs shrink-0">▸</span>
+              <div>
+                <span>{cert.name}</span>
+                <span class="text-gray-600 ml-2">— {cert.source} {cert.year}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Reveal>
+  </div>
+
+  <script is:inline>
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      var meshArea = document.getElementById('mesh-area');
+      if (!meshArea) return;
+      var bubbleEls = meshArea.querySelectorAll('.mesh-icon');
+      if (bubbleEls.length === 0) return;
+
+      var bubbles = [];
+      var areaRect = meshArea.getBoundingClientRect();
+
+      bubbleEls.forEach(function(el) {
+        var xPct = parseFloat(el.getAttribute('data-x'));
+        var yPct = parseFloat(el.getAttribute('data-y'));
+        bubbles.push({
+          el: el,
+          x: xPct / 100 * areaRect.width,
+          y: yPct / 100 * areaRect.height,
+          vx: 0,
+          vy: 0,
+          radius: 30
+        });
+      });
+
+      var mouse = { x: -1000, y: -1000 };
+      var MOUSE_FORCE = 8;
+      var MOUSE_RADIUS = 120;
+      var FRICTION = 0.92;
+      var BOUNCE = 0.7;
+
+      document.addEventListener('mousemove', function(e) {
+        var r = meshArea.getBoundingClientRect();
+        mouse.x = e.clientX - r.left;
+        mouse.y = e.clientY - r.top;
+      });
+
+      function animate() {
+        areaRect = meshArea.getBoundingClientRect();
+
+        for (var i = 0; i < bubbles.length; i++) {
+          var b = bubbles[i];
+
+          var dx = mouse.x - b.x;
+          var dy = mouse.y - b.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < MOUSE_RADIUS && dist > 0) {
+            var force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
+            b.vx -= (dx / dist) * force * MOUSE_FORCE;
+            b.vy -= (dy / dist) * force * MOUSE_FORCE;
+          }
+
+          for (var j = i + 1; j < bubbles.length; j++) {
+            var other = bubbles[j];
+            var cx = other.x - b.x;
+            var cy = other.y - b.y;
+            var cdist = Math.sqrt(cx * cx + cy * cy);
+            var minDist = b.radius + other.radius;
+            if (cdist < minDist && cdist > 0) {
+              var nx = cx / cdist;
+              var ny = cy / cdist;
+              var dvx = b.vx - other.vx;
+              var dvy = b.vy - other.vy;
+              var dvn = dvx * nx + dvy * ny;
+              if (dvn > 0) {
+                b.vx -= dvn * nx * 0.5;
+                b.vy -= dvn * ny * 0.5;
+                other.vx += dvn * nx * 0.5;
+                other.vy += dvn * ny * 0.5;
+              }
+              var overlap = minDist - cdist;
+              b.x -= nx * overlap * 0.5;
+              b.y -= ny * overlap * 0.5;
+              other.x += nx * overlap * 0.5;
+              other.y += ny * overlap * 0.5;
+            }
+          }
+
+          b.vx *= FRICTION;
+          b.vy *= FRICTION;
+          b.x += b.vx;
+          b.y += b.vy;
+
+          var w = areaRect.width;
+          var h = areaRect.height;
+          if (b.x < b.radius) { b.x = b.radius; b.vx *= -BOUNCE; }
+          if (b.x > w - b.radius) { b.x = w - b.radius; b.vx *= -BOUNCE; }
+          if (b.y < b.radius) { b.y = b.radius; b.vy *= -BOUNCE; }
+          if (b.y > h - b.radius) { b.y = h - b.radius; b.vy *= -BOUNCE; }
+
+          b.el.style.transform = 'translate(' + (b.x - areaRect.width * parseFloat(b.el.getAttribute('data-x')) / 100) + 'px, ' + (b.y - areaRect.height * parseFloat(b.el.getAttribute('data-y')) / 100) + 'px)';
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    });
+  })();
+  </script>
+</section>

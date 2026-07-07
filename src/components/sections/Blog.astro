@@ -1,0 +1,60 @@
+---
+import Reveal from '../ui/Reveal.astro';
+
+const posts = [
+  {
+    title: 'Monolito Modular vs Microservicios: ¿Cuándo usar cada uno?',
+    date: '15 Jun 2026',
+    excerpt: 'Explorando las ventajas del Monolito Modular como alternativa pragmática a los microservicios.',
+    tags: ['Arquitectura', '.NET'],
+    slug: 'monolito-modular-vs-microservicios',
+  },
+  {
+    title: 'Clean Architecture en la práctica con .NET',
+    date: '28 May 2026',
+    excerpt: 'Cómo implementar Clean Architecture en proyectos .NET reales.',
+    tags: ['.NET', 'C#'],
+    slug: 'clean-architecture-net',
+  },
+  {
+    title: 'TypeScript: Tipos avanzados que todo dev debería conocer',
+    date: '10 May 2026',
+    excerpt: 'Tipos condicionales, mapped types y template literal types.',
+    tags: ['TypeScript', 'React'],
+    slug: 'typescript-tipos-avanzados',
+  },
+];
+---
+
+<section id="blog" class="relative py-28 px-6 overflow-hidden">
+  <div class="bg-number -right-10 top-10">06</div>
+
+  <div class="max-w-5xl mx-auto relative z-10">
+    <Reveal>
+      <p class="text-[11px] text-gray-600 font-mono tracking-[4px] uppercase mb-2">// 06</p>
+      <h2 class="text-4xl md:text-6xl font-black text-white tracking-[-0.03em]">Blog</h2>
+    </Reveal>
+
+    <div class="space-y-4 mt-14">
+      {posts.map((post, i) => (
+        <Reveal delay={i * 100}>
+          <a href={`/blog/${post.slug}`} class="accent-bar group">
+            <div class="bar"></div>
+            <div class="space-y-2 flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-2">
+                <h3 class="font-bold text-sm text-white group-hover:text-khaos-magenta transition-colors truncate">{post.title}</h3>
+                <span class="text-[10px] text-gray-600 font-mono whitespace-nowrap shrink-0">{post.date}</span>
+              </div>
+              <p class="text-xs text-gray-500 leading-relaxed">{post.excerpt}</p>
+              <div class="flex gap-1.5 pt-1">
+                {post.tags.map((tag) => (
+                  <span class="text-[10px] px-2 py-0.5 border border-white/10 text-gray-600">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </a>
+        </Reveal>
+      ))}
+    </div>
+  </div>
+</section>

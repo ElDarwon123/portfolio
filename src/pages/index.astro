@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Hero from '../components/sections/Hero.astro';
+import About from '../components/sections/About.astro';
+import Skills from '../components/sections/Skills.astro';
+import Projects from '../components/sections/Projects.astro';
+import Experience from '../components/sections/Experience.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import Blog from '../components/sections/Blog.astro';
+import Contact from '../components/sections/Contact.astro';
+---
+
+<BaseLayout title="Darwin Gomez | FullStack Developer">
+  <Header />
+  <main>
+    <Hero />
+    <About />
+    <Skills />
+    <Projects />
+    <Experience />
+    <Testimonials />
+    <Blog />
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>

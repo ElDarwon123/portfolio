@@ -1,0 +1,30 @@
+---
+const navItems = [
+  { label: 'Inicio', href: '#hero' },
+  { label: 'Sobre mí', href: '#about' },
+  { label: 'Habilidades', href: '#skills' },
+  { label: 'Proyectos', href: '#projects' },
+  { label: 'Experiencia', href: '#experience' },
+  { label: 'Blog', href: '#blog' },
+  { label: 'Contacto', href: '#contact' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/5">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="#hero" class="flex items-center gap-2 group">
+      <img src="/images/logo_light.PNG" alt="Logo Darwin" class="h-7 w-auto group-hover:opacity-80 transition-opacity" />
+      <span class="text-sm font-black text-khaos-magenta group-hover:text-white transition-colors tracking-tight">DARWIN</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6">
+      {navItems.map((item) => (
+        <a href={item.href} class="text-[11px] text-gray-500 hover:text-white transition-colors font-medium tracking-wider uppercase">
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <a href="#contact" class="magnetic text-[11px] font-bold px-4 py-2 bg-khaos-magenta text-white hover:shadow-[0_0_25px_rgba(214,0,122,0.5)] transition-all duration-300">
+      Contáctame
+    </a>
+  </div>
+</header>

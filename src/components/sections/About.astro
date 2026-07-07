@@ -1,0 +1,173 @@
+---
+import Reveal from '../ui/Reveal.astro';
+---
+
+<section id="about" class="relative py-28 px-6 overflow-hidden section-blur">
+  <div class="bg-number -left-20 top-10">01</div>
+
+  <div class="max-w-5xl mx-auto relative z-10">
+    <Reveal>
+      <p class="text-[11px] text-gray-600 font-mono tracking-[4px] uppercase mb-2">// 01</p>
+      <h2 class="text-4xl md:text-6xl font-black text-white tracking-[-0.03em]">Sobre Mí</h2>
+    </Reveal>
+
+    <div class="grid md:grid-cols-12 gap-10 mt-14">
+      <div class="md:col-span-5">
+        <Reveal direction="left">
+          <div class="space-y-6">
+            <div class="avatar-glow w-24 h-24 rounded-full bg-khaos-magenta/15 border border-khaos-magenta/20 flex items-center justify-center text-3xl font-black text-khaos-magenta">
+            <img src="/images/yoNormal.JPG" alt="Avatar Darwin" class="w-20 h-20 rounded-full object-cover" />
+            </div>
+            <div class="space-y-0">
+              {[
+                { label: 'Nombre', value: 'Darwin Steven Gomez Camayo' },
+                { label: 'Locación', value: 'Popayán, Colombia' },
+                { label: 'Email', value: 'darwing.j10@gmail.com', link: true },
+                { label: 'Teléfono', value: '+57 (313) 483-8350' },
+                { label: 'Idiomas', value: 'Español (Nativo) · Inglés B2' },
+              ].map((item, i) => (
+                <div class="flex gap-4 py-3 border-b border-gray-800">
+                  <span class="text-gray-500 w-24 shrink-0 text-[10px] uppercase tracking-[2px] font-mono">{item.label}</span>
+                  {item.link ? (
+                    <a href={`mailto:${item.value}`} class="text-khaos-cyan hover:underline text-sm">{item.value}</a>
+                  ) : (
+                    <span class="text-gray-200 text-sm">{item.value}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+        <Reveal direction="left" delay={200}>
+          <div class="mt-8 space-y-3">
+            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-[3px]">Educación</h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex gap-3 pb-3 border-b border-gray-800">
+                <span class="text-khaos-magenta font-mono text-[10px] mt-1 shrink-0">▸</span>
+                <div>
+                  <p class="text-gray-200 font-semibold">Ingeniería de Sistemas</p>
+                  <p class="text-gray-500 text-xs">Fundación Universitaria de Popayán — 2025-Actualidad</p>
+                </div>
+              </div>
+              <div class="flex gap-3 pb-3 border-b border-gray-800">
+                <span class="text-khaos-cyan font-mono text-[10px] mt-1 shrink-0">▸</span>
+                <div>
+                  <p class="text-gray-200 font-semibold">Tecnólogo en Análisis y Desarrollo de Software</p>
+                  <p class="text-gray-500 text-xs">SENA — 2023-2025</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+
+      <div class="md:col-span-7">
+        <Reveal direction="right">
+          <div class="space-y-6">
+            <p id="about-quote" class="text-2xl md:text-3xl font-bold text-white leading-snug tracking-[-0.02em] min-h-[2.5rem]">
+              <span class="typewriter-cursor">|</span>
+            </p>
+            <div class="space-y-4 text-[15px] leading-relaxed text-gray-300">
+              <p>Desarrollador FullStack con <span class="text-khaos-green font-semibold">2 años de experiencia</span>. Me especializo en construir sistemas escalables con arquitectura sólida y código de calidad.</p>
+              <p>Mi enfoque se adapta a <span class="text-white font-semibold">tus necesidades y a las del proyecto</span> — ya sea <span class="text-khaos-cyan">Clean Architecture</span>, <span class="text-khaos-cyan">Monolito Modular</span>, <span class="text-khaos-cyan">App Router</span>, <span class="text-khaos-cyan">Hexagonal</span> o <span class="text-khaos-cyan">Atomic</span>. La arquitectura correcta depende del contexto, y mi trabajo es encontrar la que mejor funcione para escalar tu solución.</p>
+              <p class="text-gray-500">Aplico <span class="text-khaos-amber">Scrum</span> para flujos ágiles y busco siempre entregar valor real, no solo código.</p>
+            </div>
+          </div>
+        </Reveal>
+        <Reveal direction="right" delay={200}>
+          <div class="grid grid-cols-3 gap-4 mt-10">
+            <div class="stat-card bg-[#111] border border-white/5 p-4 text-center rounded-xl hover:border-khaos-magenta/20 transition-colors">
+              <div class="text-3xl md:text-4xl font-black text-white counter" data-target="2">0</div>
+              <div class="text-[10px] text-gray-500 uppercase tracking-wider mt-1 font-mono">Años Exp.</div>
+            </div>
+            <div class="stat-card bg-[#111] border border-white/5 p-4 text-center rounded-xl hover:border-khaos-cyan/20 transition-colors">
+              <div class="text-3xl md:text-4xl font-black text-white"><span class="counter" data-target="15">0</span>+</div>
+              <div class="text-[10px] text-gray-500 uppercase tracking-wider mt-1 font-mono">Proyectos</div>
+            </div>
+            <div class="stat-card bg-[#111] border border-white/5 p-4 text-center rounded-xl hover:border-khaos-amber/20 transition-colors">
+              <div class="text-3xl md:text-4xl font-black text-white counter" data-target="3">0</div>
+              <div class="text-[10px] text-gray-500 uppercase tracking-wider mt-1 font-mono">Certificados</div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .typewriter-cursor { animation: blink 1s step-end infinite; color: var(--color-khaos-magenta); font-weight: 400; }
+  </style>
+
+  <script is:inline>
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      var counters = document.querySelectorAll('.counter');
+      var activeTimers = {};
+
+      var counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          var el = entry.target;
+          var id = el.getAttribute('data-target');
+          if (!entry.isIntersecting) {
+            if (activeTimers[id]) { clearInterval(activeTimers[id]); delete activeTimers[id]; }
+            el.textContent = '0';
+            return;
+          }
+          var target = parseInt(id);
+          var current = 0;
+          var increment = target / 40;
+          if (activeTimers[id]) clearInterval(activeTimers[id]);
+          activeTimers[id] = setInterval(function() {
+            current += increment;
+            if (current >= target) { el.textContent = target; clearInterval(activeTimers[id]); delete activeTimers[id]; }
+            else { el.textContent = Math.floor(current); }
+          }, 30);
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(function(c) { counterObserver.observe(c); });
+
+      var quoteEl = document.getElementById('about-quote');
+      if (!quoteEl) return;
+      var fullText = 'Código limpio, arquitectura sólida, ';
+      var highlightText = 'impacto real';
+      var suffix = '.';
+      var charIndex = 0;
+      var typingTimer = null;
+
+      var typewriterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) {
+            if (typingTimer) { clearTimeout(typingTimer); typingTimer = null; }
+            charIndex = 0;
+            quoteEl.innerHTML = '<span class="typewriter-cursor">|</span>';
+            return;
+          }
+          charIndex = 0;
+          typeChar();
+        });
+      }, { threshold: 0.3 });
+      typewriterObserver.observe(quoteEl);
+
+      function typeChar() {
+        if (charIndex < fullText.length) {
+          quoteEl.innerHTML = fullText.substring(0, charIndex + 1) + '<span class="typewriter-cursor">|</span>';
+          charIndex++;
+          typingTimer = setTimeout(typeChar, 40);
+        } else if (charIndex < fullText.length + highlightText.length) {
+          var hIdx = charIndex - fullText.length;
+          quoteEl.innerHTML = fullText + '<span class="text-khaos-magenta font-bold">' + highlightText.substring(0, hIdx + 1) + '</span><span class="typewriter-cursor">|</span>';
+          charIndex++;
+          typingTimer = setTimeout(typeChar, 40);
+        } else if (charIndex < fullText.length + highlightText.length + suffix.length) {
+          var sIdx = charIndex - fullText.length - highlightText.length;
+          quoteEl.innerHTML = fullText + '<span class="text-khaos-magenta font-bold">' + highlightText + '</span>' + suffix.substring(0, sIdx + 1) + '<span class="typewriter-cursor">|</span>';
+          charIndex++;
+          typingTimer = setTimeout(typeChar, 40);
+        } else {
+          quoteEl.innerHTML = '\u201C' + fullText + '<span class="text-khaos-magenta font-bold">' + highlightText + '</span>' + suffix + '\u201D';
+        }
+      }
+    });
+  })();
+  </script>
+</section>
